@@ -1,11 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-const allPosts = Object.values(import.meta.glob('../posts/*.md', { eager: true }));
-const tags = [...new Set(allPosts.map((post: any) => post.frontmatter.tags).flat())];
-const pageTitle = "Home";
+import Greeting from '../components/Greeting';
+const pageTitle = "Home Page";
 ---
 <BaseLayout pageTitle={pageTitle}>
-  <ul>
-    {tags.map((tag) => <li>{tag}</li>)}
-  </ul>
+  <h2>My awesome blog subtitle</h2>
+  <Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
 </BaseLayout>
